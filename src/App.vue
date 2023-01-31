@@ -1,14 +1,21 @@
 <template>
   <div class="ctr">
-    
-    
+    <questions></questions>
+    <answers></answers>
     <button type="button" class="reset-btn">Reset</button>
 </div>
 </template>
 
 <script>
+import Questions from "@/components/Questions.vue"
+import Answers from "@/components/Answers.vue"
+
 export default{
   name:"App",
+  components: {
+    Questions,
+    Answers
+  },
   data() {
     return {
     questions: [
