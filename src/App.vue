@@ -4,7 +4,7 @@
     :questions="questions" 
     :questionsAnswered="questionsAnswered" @question-answered="questionAnswered"></questions>
 
-    <answers v-else></answers>
+    <answers v-else :results="results" :totalCorrect="totalCorrect" ></answers>
 
     <button 
     type="button" 
