@@ -5,7 +5,11 @@
     :questionsAnswered="questionsAnswered" @question-answered="questionAnswered"></questions>
 
     <answers v-else></answers>
-    <button type="button" class="reset-btn">Reset</button>
+
+    <button 
+    type="button" 
+    class="reset-btn" @click.prevent="reset" 
+    v-if="this.questionsAnswered === this.questions.length">Reset</button>
 </div>
 </template>
 
@@ -21,9 +25,9 @@ export default{
   },
   data() {
     return {
-    questionsAnswered: 0,  
-    totalCorrect: 0,
-    questions: [
+        questionsAnswered: 0,  
+        totalCorrect: 0,
+        questions: [
         {
             q: 'What is 2 + 2?', 
             answers: [
@@ -83,32 +87,34 @@ export default{
                 }
             ] 
         },
-    ],
-    results: [
-        {
-            min: 0,
-            max: 2,
-            title: "Try again!",
-            desc: "Do a little more studying and you may succeed!"
-        },
-        {
-            min: 3,
-            max: 3,
-            title: "Wow, you're a genius!",
-            desc: "Studying has definitely paid off for you!"
-        }
-    ]
+        ],
+        results: [
+            {
+                min: 0,
+                max: 2,
+                title: "Try again!",
+                desc: "Do a little more studying and you may succeed!"
+            },
+            {
+                min: 3,
+                max: 3,
+                title: "Wow, you're a genius!",
+                desc: "Studying has definitely paid off for you!"
+            }
+        ]
     }
   },
   methods: {
         questionAnswered(is_correct){
             if(is_correct){
-                console.log(is_correct);
-
                 this.totalCorrect++;
             }
             this.questionsAnswered++;
-            }
+            },
+        reset(){
+            this.questionsAnswered = 0;
+            this.totalCorrect = 0;
+        },
         }
 }
 </script>
